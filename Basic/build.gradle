@@ -1,0 +1,96 @@
+
+/*
+buildscript
+{
+    repositories { flatDir dirs: project.file("lib/buildscript") }
+    dependencies { classpath "clojuresque:clojuresque:1.4.5" }
+}
+
+apply plugin: "clojure"
+
+repositories
+{
+    flatDir dirs: project.file("lib/runtime")
+}
+
+dependencies
+{
+    compile "org.clojure:clojure:1.2.1"
+}
+*/
+
+
+buildscript
+{
+    repositories
+    {
+        mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
+    }
+    dependencies
+    {
+        classpath 'clojuresque:clojuresque:1.4.4'
+    }
+}
+
+group = 'example.group'
+version = '1.0.0'
+
+apply plugin: 'clojure'
+
+warnOnReflection = true
+aotCompile = true
+
+repositories
+{
+    mavenCentral()
+    clojarsRepo()
+}
+
+dependencies
+{
+    compile 'org.clojure:clojure:1.2.1'
+}
+
+
+
+
+
+
+
+
+
+
+/*
+buildscript
+{
+    repositories
+    {
+        mavenCentral name: 'clojars', url: 'http://clojars.org/repo'
+//        mavenCentral artifactUrls: []
+//        mavenRepo name: 'clojars', urls: 'http://clojars.org/repo'
+    }
+    dependencies
+    {
+        classpath 'clojuresque:clojuresque:1.4.1'
+    }
+}
+
+group = 'example.group'
+version = '1.0.0'
+
+apply plugin: 'clojure'
+
+warnOnReflection = true
+aotCompile = true
+
+repositories
+{
+    mavenCentral()
+    clojarsRepo()
+}
+
+dependencies
+{
+    compile 'org.clojure:clojure:1.2.1'
+}
+*/

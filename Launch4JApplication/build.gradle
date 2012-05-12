@@ -1,0 +1,72 @@
+
+buildscript
+{
+	repositories
+	{
+		mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
+	}
+	dependencies
+	{
+		classpath 'clojuresque:clojuresque:1.4.4'
+	}
+}
+
+group = 'example.group'
+version = '1.0.0.0'
+
+apply plugin: 'clojure'
+
+warnOnReflection = true
+aotCompile = true
+
+repositories
+{
+	mavenCentral()
+	clojarsRepo()
+}
+
+dependencies
+{
+	compile 'org.clojure:clojure:1.2.1'
+}
+
+
+
+// NOTE: You *must* enable AOT (Ahead-of-Time) compilation in order to use a Clojure class as the main class
+// NOTE: You must also add (:gen-class) to the "main class" (ns) definition in order to generate a class.
+aotCompile = true
+
+jar
+{
+	manifest.attributes("Main-Class": "foo")
+}
+
+apply plugin: 'application'
+mainClassName = "foo"
+
+
+
+
+
+
+// Launch4J
+apply plugin: 'launch4j'
+
+launch4j
+{
+	launch4jCmd = 'C:\\Program Files (x86)\\Launch4j\\launch4jc.exe'
+//	launch4jCmd = 'launch4jc'
+//	outputDir = 'FOO_BAR_BIM_BAZ'
+//	mainClassName = mainClassName
+//	mainClassName = 'main'
+	mainClassName = 'foo'
+//	icon = './1332309679_7.ico'
+//	icon = 'icons/1332309679_7.ico'
+}
+
+buildscript
+{
+	repositories { ivy { artifactPattern 'http://gradle-launch4j.googlecode.com/files/[module]-[revision].[ext]' } }
+//    dependencies { classpath 'edu.sc.seis:gradle-launch4j:1.0.2' }
+	dependencies { classpath 'edu.sc.seis:gradle-launch4j:1.0.4' }
+}
